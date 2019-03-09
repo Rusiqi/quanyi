@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            X-admin v1.0
+        </title>
+        <!-- <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="./css/x-admin.css" media="all"> -->
+        {load href="__STATIC__/admin/css/x-admin.css"}
+        {load href="__STATIC__/admin/js/jquery.min.js"}
+    </head>
+    
+    <body>
+        <div class="x-body">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>登录名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input">
+                        <span class="username"></span>
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>
+                        <span class="ming">将会成为您唯一的登入名</span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>手机
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="phone" name="phone" required="" lay-verify="phone"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span><span class="phone"></span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>邮箱
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="email" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span><span class="email"></span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="role" class="layui-form-label">
+                        <span class="x-red">*</span>角色
+                    </label>
+                    <div class="layui-input-inline">
+                      <select name="role" id="aa">
+                        <option value="青铜管理员" class="dianji">青铜管理员</option>
+                        <option value="黄金管理员" class="dianji">黄金管理员</option>
+                        <option value="铂金管理员" class="dianji">铂金管理员</option>
+                        <option value="超级管理员" class="dianji">超级管理员</option>
+                      </select>
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_pass" class="layui-form-label">
+                        <span class="x-red">*</span>密码
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
+                        autocomplete="off" class="layui-input pass">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="L_pass">6到16个字符</span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                        <span class="x-red">*</span>确认密码
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+                        autocomplete="off" class="layui-input repass">                        
+                    </div>
+                    <span class="arepass"></span>
+                    
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button type="submit"  class="layui-btn"  lay-submit="" onclick="add()">
+                        增加
+                    </button>
+                    <!-- <input type="submit" onclick="add()"> -->
+                    
+                </div>
+        </div>
+    </form>
+    {load href="__STATIC__/admin/lib/layui/layui.js"}
+    {load href="__STATIC__/admin/js/x-layui.js"}
+
+        <!-- 账号判断 --> 
+        <script>
+            $(function(){
+                $('#username').blur(function(){
+                    var username=$(this).val();
+                    var lenReg = /^[\w\u4e00-\u9fa5]{6,8}$/;
+                    if(lenReg.test(username)){
+                        $('.ming').text('');
+                        return true;                           
+                    }else{
+                        $('.ming').text('昵称至少6个字符至多12个字符!').css('color','red'); 
+                        // layer.msg('',{icon:2,time:4000});
+                        return false;
+                    }
+                })
+             })   
+        </script>
+
+        <!--手机号判断  -->
+        <script>            
+            $(function(){
+                $('#phone').blur(function(){
+                    var phone=$(this).val();
+                    var phoneReg = /^[1][3-9][0-9]{9}$/;
+                    if(phoneReg.test(phone)){
+                        $('.phone').text('');
+                        return true;
+                    }else{
+                        $('.phone').text('请输入正确的手机号').css('color','red');
+                        // layer.msg('',{icon:2,time:4000});
+                        return false;
+                    }
+                })
+            })
+        </script>
+
+        <!-- 邮箱判断 -->
+        <script>
+            $(function(){
+                $('#email').blur(function(){
+                    var email=$(this).val();
+                    var emailReg=/^\w+@\w+(\.\w+){1,3}$/;
+                    if(emailReg.test(email)){
+                        $('.email').text('');
+                        return true;
+                    }else{
+                        $('.email').text('请输入正确的邮箱格式').css('color','red');
+                        // layer.msg('',{icon:2,time:4000});
+                        return false;
+                    }
+                })
+            })
+        </script>
+
+        <!-- 密码判断 -->
+        <script>
+            $(function(){
+                $('#L_pass').blur(function(){
+                    var L_pass=$('#L_pass').val();
+                    var passReg=/^(\w){6,12}$/;
+                    if(!passReg.test(L_pass)){
+                        $('.L_pass').text('密码必须6到12位').css('color','red');
+                        // layer.msg('',{icon:2,time:4000});
+                        return false;
+                    }else{
+                        $('.L_pass').text('');
+                        return true;
+                    }
+                    
+                })                
+            })
+        </script>
+        <script>
+            $(function(){
+                $('#L_repass').blur(function(){
+                        var L_repass=$('#L_repass').val();
+                        var L_pass=$('#L_pass').val()
+                        if(L_repass!=L_pass){
+                            $('.arepass').text('两次密码不一致').css('color','red');
+                            // layer.msg('两次密码不一致',{icon:2,time:4000});
+                            return false;
+                        }else{
+                            $('.arepass').text('');
+                            return true;
+                        }
+                    })
+            })
+        </script>
+
+        <script>
+            function add(){
+                var L_pass=$('#L_pass').val();
+                var count = L_pass.length;
+                var namelen = $('.ming').text();
+                namel = namelen.length;
+                if(count>5&&count<17){                
+                    name=$('#username').val();                
+                    phone=$('#phone').val();
+                    email=$('#email').val();
+                    role=$('#aa').val();
+                    if($('.pass').val()==$('.repass').val() && namel<1){
+                        pass=$('.pass').val();                        
+                            $.ajax({
+                                type:'post',
+                                url:'/admin/Adminlist/add',
+                                data:{"name":name,"phone":phone,"email":email,"role":role,"pass":pass},
+                                success:function(data){
+                                    // alert(data);
+                                    if(data==2){
+                                        layer.msg('登录名已存在!',{icon:2,time:5000});                        
+                                    }else if(data==3){
+                                        layer.msg('该手机号已注册!',{icon:2,time:5000});                     
+                                    }else if(data==4){
+                                        layer.msg('该邮箱已注册!',{icon:2,time:5000});
+                                    }else if(data==1){
+                                        layer.msg('添加成功!',{icon:6,time:3000});
+                                        window.parent.location.reload();
+                                        parent.layer.closeAll('iframe');
+                                    }else if(data==0){
+                                        layer.msg('添加失败!',{icon:2,time:3000});
+                                    }
+                                }
+                            })                           
+                    }                   
+                }else{
+                    layer.msg('密码必须6到12位!',{icon:2,time:3000});
+                }
+                
+            }
+            </script>
+
+        
+        
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer; 
+               form.verify({
+                repass: function(value){
+                    if($('#L_pass').val()!=$('#L_repass').val()){
+                        return '两次密码不一致';
+                    }
+                }
+              });                          
+            });
+        </script>
+    </body>
+
+</html>

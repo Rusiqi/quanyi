@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>惠权益</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/animate.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!-- 本页样式表 -->
+    <link href="../css/timeline.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <a class="blog-logo" href="home.html">惠权益</a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item">
+                    <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;活动</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;卡包</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;我的</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="my">
+	        <div class="my-img my-all">
+	        	<img src="../images/logo/1.jfif"/>
+	        </div>
+	        <div class="my-add my-all">
+	        	<p>用户账户</p>
+	        	<p class="my-p2">用户等级&nbsp;&nbsp;&nbsp;青铜</p>
+	        </div>
+        </div>
+        <div class="my">
+        	<div class="money">
+        		<p>我的钱包</p>
+        	</div>
+        	<div class="my-balance my-border">
+        		<p>可提现用户余额</p>
+        		<p class="my-balance-money">0.00</p>
+        	</div>
+        	<div class="my-balance">
+        		<p>冻结用户余额</p>
+        		<p class="my-balance-money">0.00</p>
+        	</div>
+        </div>
+        <div class="my">
+        	<div class="money">
+        		<p>我的买单</p>
+        	</div>
+        	<div class="myshop">
+        		<div class="myshop-shopping myshop-pay">
+        			<img src="../images/logo/待支付.png" />
+        			<p class="myshop-children">待支付</p>
+        		</div>
+        		<div class="myshop-shopping myshop-pay">
+        			<img src="../images/logo/待收货.png" />
+        			<p class="myshop-children">待收货</p>
+        		</div>
+        		<div class="myshop-shopping myshop-pay">
+        			<img src="../images/logo/已完成.png" />
+        			<p class="myshop-children">已收货</p>
+        		</div>
+        		<div class="myshop-shopping myshop-pay">
+        			<img src="../images/logo/纠纷调处.png" />
+        			<p class="myshop-children">退款/售后</p>
+        		</div>
+        	</div>
+        </div>
+        <div class="my">
+        	<div class="money">
+        		<p>我的卖单</p>
+        	</div>
+        	<div class="myshop">
+        		<div class="myshop-shopping myshop-sale">
+        			<img src="../images/logo/出售中的产品.png" />
+        			<p>出售中</p>
+        		</div>
+        		<div class="myshop-shopping myshop-sale">
+        			<img src="../images/logo/下架.png" />
+        			<p>已下架</p>
+        		</div>
+        		<div class="myshop-shopping myshop-sale">
+        			<img src="../images/logo/已出售.png" />
+        			<p>已收货</p>
+        		</div>
+        		<div class="myshop-shopping myshop-sale">
+        			<img src="../images/logo/纠纷调处.png" />
+        			<p>退款/售后</p>
+        		</div>
+        	</div>
+        </div>
+    </div>
+    <!--侧边导航-->
+    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="home.html"><i class="fa bottom-fa fa-home fa-fw"></i><b class="bottom-fa">&nbsp;首页</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="article.html"><i class="fa bottom-fa fa-file-text fa-fw"></i><b class="bottom-fa">&nbsp;活动</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="resource.html"><i class="fa bottom-fa fa-tags fa-fw"></i><b class="bottom-fa">&nbsp;卡包</b></a>
+        </li>
+        <li class="layui-nav-item layui-this">
+            <a href="timeline.html"><i class="fa bottom-fa fa-road fa-fw"></i><b class="bottom-fa">&nbsp;我的</b></a>
+        </li>
+    </ul>
+    <!-- layui.js -->
+    <script src="../plug/layui/layui.js"></script>
+    <!-- 全局脚本 -->
+    <script src="../js/global.js"></script>
+    <script src="../js/jquery.js"></script>
+    <!-- 本页脚本 -->
+    <script type="text/javascript">
+    	$(function(){
+    		//点击事件进入我买单主页面
+    		$('.myshop-pay').click(function(){
+    			//获取点击的待支付,待收货等判断
+    			var show = $(this).children("p").text();
+    			location.href="pay.html?page="+show;
+    		})
+    		//点击事件进入我卖单主页面
+    		$('.myshop-sale').click(function(){
+    			//获取点击的待支付,待收货等判断
+    			var show = $(this).children("p").text();
+    			location.href="sale.html";
+    		})
+    	})
+    </script>
+</body>
+</html>

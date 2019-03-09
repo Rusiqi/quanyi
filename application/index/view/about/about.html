@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>惠权益</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!-- 本页样式表 -->
+    <link href="../css/about.css" rel="stylesheet" />
+    {load href="__STATIC__/index/plug/layui/css/layui.css"}
+    {load href="__STATIC__/index/plug/font-awesome/css/font-awesome.min.css"}
+    {load href="__STATIC__/index/css/global.css"}
+    {load href="__STATIC__/index/css/about.css"}
+    <style>
+    	.click{
+    		color: orangered;
+    	}
+    	.noclick{
+    		color: #333333;
+    	}
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <a class="blog-logo" href="home.html">列表</a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item">
+                    <a href="{:url('index/index')}"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('article/article')}"><i class="fa fa-file-text fa-fw"></i>&nbsp;活动</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('resource/resource')}"><i class="fa fa-tags fa-fw"></i>&nbsp;卡包</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('timeline/timeline')}"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;我的</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <div class="blog-main">
+                <div class="layui-tab layui-tab-brief shadow blog-main-left" lay-filter="tabAbout">
+                    <div class="article shadow">
+                		<form class="search">
+					    	<input class="search-con" type="text" name="content" value=""/>
+							<input class="search-conten" type="submit" value="搜索"  style="height: 30px;"/>
+						</form>
+					</div>
+					<div class="prices">
+						<button class="comprehensive">综合</button>
+						<button class="price-asc">价格升序</button>
+						<button class="price-desc">价格降序</button>
+					</div>
+					<div class="new-good">
+                    	<div class="good-allshop good-allshop-img">
+                    		<img src="/uploads/images/cover/201703051349045432.jpg"/>
+                    	</div>
+	                    <div class="good-allshop good-allshop-con">
+	                    	<div class="good-allshop-content1 good-allshop-content">
+	                    		<p class="good-allshop-content-p1">商品名称:50原联通移动话费充值卡商品名称:50原联通移动话费充值卡商品名称:50原联通移动话费充值卡</p>
+	                    	</div>
+	                    	<div class="good-allshop-content2 good-allshop-content">
+	                    		<p>剩余:<span>555</span></p>
+	                    		<p>已售出:<span>555</span></p>
+	                    	</div>
+	                    	<div class="good-allshop-content3 good-allshop-content">
+	                    		<p class="good-allshop-content3-p"><span>¥ 50</span><span class="del">¥ 150</span></p>
+	                    	</div>
+	                    </div>
+                  	</div>
+                  	<div class="new-good">
+                    	<div class="good-allshop good-allshop-img"><img src="/uploads/images/Absolutely.jpg"/></div>
+	                    <div class="good-allshop good-allshop-con">
+	                    	<div class="good-allshop-content1">
+	                    		<p class="good-allshop-content-p1">商品名称:50原联通移动话费充值卡商品名称:50原联通移动话费充值卡商品名称:50原联通移动话费充值卡</p>
+	                    	</div>
+	                    	<div class="good-allshop-content2">
+	                    		<p>剩余:<span>555</span></p>
+	                    		<p>已售出:<span>555</span></p>
+	                    	</div>
+	                    	<div class="good-allshop-content3">
+	                    		<p class="good-allshop-content3-p"><span>¥ 50</span><span class="del">¥ 150</span></p>
+	                    	</div>
+	                    </div>
+                  	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--侧边导航-->
+    <!--<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+        <li class="layui-nav-item layui-this">
+            <a href="home.html"><i class="fa bottom-fa fa-home fa-fw"></i><b class="bottom-fa">&nbsp;首页</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="article.html"><i class="fa bottom-fa fa-file-text fa-fw"></i><b class="bottom-fa">&nbsp;活动</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="resource.html"><i class="fa bottom-fa fa-tags fa-fw"></i><b class="bottom-fa">&nbsp;卡包</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="timeline.html"><i class="fa bottom-fa fa-road fa-fw"></i><b class="bottom-fa">&nbsp;我的</b></a>
+        </li>
+    </ul>-->
+    <!-- layui.js -->
+    <script src="../plug/layui/layui.js"></script>
+    <!-- 全局脚本 -->
+    <script src="../js/global.js"></script>
+    <!-- 本页脚本 -->
+    <script src="../js/about.js"></script>
+    <!--引入jquery-->
+    <script src="../js/jquery.js"></script>
+    {load href="__STATIC__/index/plug/layui/layui.js"}
+    {load href="__STATIC__/index/js/global.js"}
+    {load href="__STATIC__/index/js/about.js"}
+    {load href="__STATIC__/index/js/jquery.js"}
+    <!--价格升序降序-->
+    <script>
+    	$(function(){
+    		$('.prices button').click(function(){
+    			$(this).addClass('click').siblings().removeClass('click');
+//  			var name = $(this).text();
+//  			alert(name);
+    		})
+    	})
+    </script>
+</body>
+</html>

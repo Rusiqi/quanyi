@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>惠权益</title>
+    {load href="__STATIC__/index/plug/layui/css/layui.css"}
+    {load href="__STATIC__/index/plug/font-awesome/css/font-awesome.min.css"}
+    {load href="__STATIC__/index/css/global.css"}
+    {load href="__STATIC__/index/css/article.css"}
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <!-- 惠权益 -->
+            <a class="blog-logo" href="home.html">惠权益</a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item">
+                    <a href="{:url('index/index')}"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="{:url('article/article')}"><i class="fa fa-file-text fa-fw"></i>&nbsp;活动</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('resource/resource')}"><i class="fa fa-tags fa-fw"></i>&nbsp;卡包</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('timeline/timeline')}"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;我的</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-main">
+            <div class="blog-main-left">
+                <div class="article shadow">
+                	<div class="article-add"><b>按银行</b></div>
+                	<div class="article-name">
+                		<div class="article-name-img">
+                			<img src="/uploads/images/logo/工行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/农行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/中行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/建行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/民生.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/汇丰.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/汇丰.png"/>
+                			<p>工行</p>
+                		</div>
+                	</div>
+                </div>
+                <div class="article shadow">
+                	<div class="article-add"><b>按回报</b></div>
+                	<div class="article-name">
+                		<div class="article-name-img">
+                			<img src="../images/logo/工行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/农行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/中行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/建行.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/民生.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/汇丰.png"/>
+                			<p>工行</p>
+                		</div>
+                		<div class="article-name-img">
+                			<img src="../images/logo/汇丰.png"/>
+                			<p>工行</p>
+                		</div>
+                	</div>
+                </div>
+            </div>
+            <div class="clear" style="height: 20px;"></div>
+        </div>
+    </div>
+    <!--侧边导航-->
+    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="{:url('index/index')}"><i class="fa bottom-fa fa-home fa-fw"></i><b class="bottom-fa">&nbsp;首页</b></a>
+        </li>
+        <li class="layui-nav-item layui-this">
+            <a href="{:url('article/article')}"><i class="fa bottom-fa fa-file-text fa-fw"></i><b class="bottom-fa">&nbsp;活动</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="{:url('resource/resource')}"><i class="fa bottom-fa fa-tags fa-fw"></i><b class="bottom-fa">&nbsp;卡包</b></a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="{:url('timeline/timeline')}"><i class="fa bottom-fa fa-road fa-fw"></i><b class="bottom-fa">&nbsp;我的</b></a>
+        </li>
+    </ul>
+    <!-- layui.js -->
+    {load href="__STATIC__/index/plug/layui/layui.js"}
+    {load href="__STATIC__/index/js/global.js"}
+    {load href="__STATIC__/index/js/jquery.js"}
+    <script src="../plug/layui/layui.js"></script>
+    <!-- 全局脚本 -->
+    <script src="../js/global.js"></script>
+    <!--引入jquery-->
+    <script src="../js/jquery.js"></script>
+    <!--事件-->
+    <script>
+    	$(function(){
+			//侧边导航栏点击事件
+			$('.layui-nav .layui-nav-item').click(function(){
+				$(this).addClass('layui-this').siblings().removeClass('layui-this');
+			})
+		})
+    </script>
+</body>
+</html>
