@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bouncing Balls</title>
+ 
+      <style> 
+         body {
+            background: #dddddd;
+         }
+ 
+         #canvas {
+            margin-left: 10px;
+            margin-top: 10px;
+            background: #ffffff;
+            border: thin solid #aaaaaa;
+         }
+ 
+         #glasspane {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            padding: 0px 20px 10px 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: thin solid rgba(0, 0, 0, 0.6);
+            color: #eeeeee;
+            font-family: Droid Sans, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            -webkit-box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+            -moz-box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+            box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+         }
+ 
+         #glasspane h2 {
+            font-weight: normal;
+         }
+ 
+         #glasspane .title {
+            font-size: 2em;
+            color: rgba(255, 255, 0, 0.8);
+         }
+ 
+         #glasspane a:hover {
+            color: yellow;
+         }
+ 
+         #glasspane a {
+            text-decoration: none;
+            color: #cccccc;
+            font-size: 3.5em;
+         }
+ 
+         #glasspane p {
+            margin: 10px;
+            color: rgba(65, 65, 220, 1.0);
+            font-size: 12pt;
+            font-family: Palatino, Arial, Helvetica, sans-serif;
+         }
+      </style>
+   </head>
+ 
+   <body id="btn1">
+      <div id='glasspane'>
+         <h2 class='title'>Bouncing Balls</h2>
+ 
+         <p>One hundred balls bouncing</p>
+ 
+         <a id='startButton'>Start</a>
+      </div>
+ 
+      <canvas id='canvas' width='750' height='500'>
+         Canvas not supported
+      </canvas>
+ 
+      <script>
+      	//这一步是为了阻止右击时系统默认的弹出框
+		document.getElementById("btn1").oncontextmenu = function(e){
+	        e.preventDefault();
+	    };
+	    //在这里你就可以自己定义事件的函数啦
+		document.getElementById("btn1").onmouseup=function(oEvent) {
+		    if (!oEvent) oEvent=window.event;
+		    if (oEvent.button==2) {
+		        console.log('鼠标右击了')
+		    }
+		}
+		 		var context=document.getElementById('canvas').getContext('2d'),
+						startButton=document.getElementById('startButton'),
+						glasspane=document.getElementById('glasspane'),
+						paused=true,
+						circles=[];
+				
+				//画网格
+				drawGrid(context,'lightgray',10,10);
+				context.lineWidth=0.5;
+				context.font='32pt Ariel';
+				
+				//初始化若干个圆
+				for(var i=0;i<100;i++){
+				
+					circles[i]={
+						x:100,
+						y:100,
+						//速度向量
+						velocityX:3*Math.random(),
+						velocityY:3*Math.random(),
+						radius:50*Math.random(),
+						//toFixed() 方法可把 Number 四舍五入为指定小数位数的数字
+						color: 'rgba(' + (Math.random()*255).toFixed(0) + ', ' +
+                        (Math.random()*255).toFixed(0) + ', ' +
+                        (Math.random()*255).toFixed(0) + ', 1.0)' };
+				}
+				
+				startButton.onclick=function(e){
+					//该方法将通知 Web 浏览器不要执行与事件关联的默认动作
+					e.preventDefault();
+					//该方法将停止事件的传播，阻止它被分派到其他 Document 节点
+					e.stopPropagation();
+					paused=!paused;
+					startButton.innerText=paused?'Start':'Stop';
+				}
+					
+				
+				glasspane.onmousedown=function(e){
+					e.preventDefault();
+				  e.stopPropagation();
+				}
+					
+				context.canvas.onmousedown=function(e){
+					e.preventDefault();
+					e.stopPropagation();
+				}
+					
+					
+					//设置定时器	
+				setInterval(function(){
+					if(!paused){
+						//清空画布
+						context.clearRect(0,0,context.canvas.width,context.canvas.height);
+						//画网格
+						drawGrid(context,'lightgray',10,10);
+						//绘制圆
+						circles.forEach(function(circle){
+							context.beginPath();
+							context.arc(circle.x,circle.y,circle.radius,0,Math.PI*2,false);
+							context.fillStyle=circle.color;
+							context.fill();
+							adjustPosition(circle);
+						});
+					}
+						
+					},1000/60);
+					
+					
+					//调整圆的位置坐标
+				function adjustPosition(circle){
+					//判断圆的运动坐标是否越界，越界则反向运动
+					  if(circle.x+circle.velocityX+circle.radius>context.canvas.width ||
+							 circle.x+circle.velocityX-circle.radius<0){
+							circle.velocityX=-circle.velocityX;
+						}
+					
+						if(circle.y+circle.velocityY+circle.radius>context.canvas.height ||
+							 circle.y+circle.velocityY-circle.radius<0){
+							circle.velocityY=-circle.velocityY;
+						}
+					
+					circle.x+=circle.velocityX;
+					circle.y+=circle.velocityY;
+				}
+					
+				
+				
+				
+				//画网格
+				function drawGrid(context,color,stepx,stepy){
+					context.strokeStyle=color;
+					context.lineWidth=0.5;
+					
+					//画竖线
+					for(var i=stepx+0.5;i<context.canvas.width;i+=stepx){
+						context.beginPath();
+						context.moveTo(i,0);
+						context.lineTo(i,context.canvas.height);
+						context.stroke();
+					}
+					
+					
+					//画横线
+					for(var i=stepy+0.5;i<context.canvas.height;i+=stepy){
+						context.beginPath();
+						context.moveTo(0,i);
+						context.lineTo(context.canvas.width,i);
+						context.stroke();
+					}
+				}
+		 
+		 </script>
+  </body>
+</html>
